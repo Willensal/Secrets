@@ -135,3 +135,4 @@ Icon
 ## hack for graddle wrapper
 !wrapper/*.jar
 !**/wrapper/*.jar
+.Secrets.code-workspace

@@ -27,7 +27,7 @@ app.use(passport.session());
 main().catch(err => console.log(err));
 async function main() {
 
-  await mongoose.connect('mongodb://127.0.0.1:27017/userDB');
+    await mongoose.connect("mongodb+srv://bestlawn123:simeon2010@serverlessinstance0.z8vn5zn.mongodb.net/?retryWrites=true&w=majority")
 
 }
 
