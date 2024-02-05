@@ -27,7 +27,7 @@ app.use(passport.session());
 main().catch(err => console.log(err));
 async function main() {
 
-    await mongoose.connect("mongodb+srv://bestlawn123:simeon2010@serverlessinstance0.z8vn5zn.mongodb.net/?retryWrites=true&w=majority")
+  await mongoose.connect("mongodb+srv://bestlawn123:simeon2010@serverlessinstance0.z8vn5zn.mongodb.net/?retryWrites=true&w=majority")
 
 }
 
@@ -61,16 +61,23 @@ passport.deserializeUser(async function (id, done) {
   done(err, user);
 });
 
+
 passport.use(new GoogleStrategy({
   clientID: process.env.CLIENT_ID,
   clientSecret: process.env.CLIENT_SECRETS,
-  callbackURL: 'http://localhost:3000/auth/google/secrets'
+  callbackURL: 'http://localhost:3000/auth/google/secrets',
+  proxy: true 
+
 },
+
+
+
   function (accessToken, refreshToken, profile, cb) {
     User.findOrCreate({ username: profile.displayName, googleId: profile.id }, function (err, user) {
       return cb(err, user);
     });
   }));
+  
 
 app.route('/').get((req, res) => {
   res.render('home');
