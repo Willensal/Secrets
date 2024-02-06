@@ -7,9 +7,9 @@ const GoogleStrategy = require('passport-google-oauth20').Strategy;
 const session = require('express-session');
 const findOrCreate = require('mongoose-findorcreate');
 const passportLocalMongoose = require('passport-local-mongoose');
-const port = 3000;
 
 const app = express();
+const port = 3000;
 
 app.use(express.static('public'));
 app.set('view engine', 'ejs');
@@ -17,7 +17,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(session({
   secret: "Our secret.",
   resave: false,
-  saveUninitialized: false
+  saveUninitialized: true,
 }));
 
 app.use(passport.initialize());
